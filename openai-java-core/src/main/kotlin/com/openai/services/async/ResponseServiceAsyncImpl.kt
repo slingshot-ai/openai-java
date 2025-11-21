@@ -374,7 +374,7 @@ class ResponseServiceAsyncImpl internal constructor(private val clientOptions: C
                     errorHandler.handle(response).parseable {
                         response.use { deleteHandler.handle(it) }
                     }
-                return delegate.withCancellation(cancellationTokenSource)
+                    .withCancellation(cancellationTokenSource)
                 }
 
             .withCancellation(cancellationTokenSource)

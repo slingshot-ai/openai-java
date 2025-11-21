@@ -75,17 +75,16 @@ class ContentServiceAsyncImpl internal constructor(private val clientOptions: Cl
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                    request
-                        .thenComposeAsync {
-                            clientOptions.httpClient.executeAsync(
-                                it,
-                                requestOptions,
-                                cancellationTokenSource.token()
-                            )
-                        }
+            return request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response -> errorHandler.handle(response) }
+                .withCancellation(cancellationTokenSource)
         }
-    return delegate.withCancellation(cancellationTokenSource)
     }
 }

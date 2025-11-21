@@ -127,8 +127,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -145,7 +144,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<RunRetrieveResponse> =
@@ -167,8 +166,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -185,7 +183,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<RunListPageResponse> =
@@ -207,8 +205,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -233,7 +230,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<RunDeleteResponse> =
@@ -256,8 +253,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -274,7 +270,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val cancelHandler: Handler<RunCancelResponse> =
@@ -297,8 +293,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -315,7 +310,7 @@ class RunServiceAsyncImpl internal constructor(private val clientOptions: Client
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
     }
 }

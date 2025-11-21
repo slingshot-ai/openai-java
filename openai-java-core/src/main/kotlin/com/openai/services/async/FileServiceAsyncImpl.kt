@@ -109,8 +109,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -127,7 +126,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<FileObject> =
@@ -149,8 +148,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -167,7 +165,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<FileListPageResponse> =
@@ -186,8 +184,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -212,7 +209,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<FileDeleted> =
@@ -235,8 +232,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -253,7 +249,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         override fun content(
@@ -272,15 +268,14 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
                             cancellationTokenSource.token()
                         ) }
                 .thenApply { response -> errorHandler.handle(response) }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
     }
 }

@@ -77,6 +77,6 @@ class SpeechServiceAsyncImpl internal constructor(private val clientOptions: Cli
                         }
                 .thenApply { response -> errorHandler.handle(response) }
         }
-    return delegate.withCancellation(cancellationTokenSource)
+        .withCancellation(cancellationTokenSource)
     }
 }

@@ -143,7 +143,7 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                                 .also {
                                     if (requestOptions.responseValidation!!) {
                                         it.validate()
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<VectorStoreFile> =

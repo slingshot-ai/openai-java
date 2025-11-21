@@ -83,8 +83,7 @@ internal constructor(private val clientOptions: ClientOptions) : TranscriptionSe
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -101,7 +100,7 @@ internal constructor(private val clientOptions: ClientOptions) : TranscriptionSe
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
     }
 }

@@ -140,8 +140,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -158,7 +157,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val createStreamingHandler: Handler<StreamResponse<ChatCompletionChunk>> =
@@ -187,8 +186,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -207,7 +205,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<ChatCompletion> =
@@ -229,8 +227,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -247,7 +244,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val updateHandler: Handler<ChatCompletion> =
@@ -270,8 +267,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -288,7 +284,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<ChatCompletionListPageResponse> =
@@ -307,8 +303,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -333,7 +328,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<ChatCompletionDeleted> =
@@ -356,8 +351,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -374,7 +368,7 @@ internal constructor(private val clientOptions: ClientOptions) : ChatCompletionS
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
     }
 }

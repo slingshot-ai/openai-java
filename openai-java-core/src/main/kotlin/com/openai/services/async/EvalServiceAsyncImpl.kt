@@ -99,7 +99,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
         ): EvalServiceAsync.WithRawResponse =
-            EvalServiceAsyncImpl.WithRawResponseImpl(
+            WithRawResponseImpl(
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 
@@ -122,13 +122,14 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
-                .thenComposeAsync { clientOptions.httpClient.executeAsync(
-                            it,
-                            requestOptions,
-                            cancellationTokenSource.token()
-                        ) }
+            return request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response ->
                     errorHandler.handle(response).parseable {
                         response
@@ -140,7 +141,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<EvalRetrieveResponse> =
@@ -162,13 +163,14 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
-                .thenComposeAsync { clientOptions.httpClient.executeAsync(
-                            it,
-                            requestOptions,
-                            cancellationTokenSource.token()
-                        ) }
+            request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response ->
                     errorHandler.handle(response).parseable {
                         response
@@ -180,7 +182,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val updateHandler: Handler<EvalUpdateResponse> =
@@ -203,13 +205,14 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
-                .thenComposeAsync { clientOptions.httpClient.executeAsync(
-                            it,
-                            requestOptions,
-                            cancellationTokenSource.token()
-                        ) }
+            request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response ->
                     errorHandler.handle(response).parseable {
                         response
@@ -221,7 +224,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<EvalListPageResponse> =
@@ -240,13 +243,14 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
-                .thenComposeAsync { clientOptions.httpClient.executeAsync(
-                            it,
-                            requestOptions,
-                            cancellationTokenSource.token()
-                        ) }
+            request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response ->
                     errorHandler.handle(response).parseable {
                         response
@@ -266,7 +270,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<EvalDeleteResponse> =
@@ -289,13 +293,14 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
-                .thenComposeAsync { clientOptions.httpClient.executeAsync(
-                            it,
-                            requestOptions,
-                            cancellationTokenSource.token()
-                        ) }
+            request
+                .thenComposeAsync {
+                    clientOptions.httpClient.executeAsync(
+                        it,
+                        requestOptions,
+                        cancellationTokenSource.token()
+                    )
+                }
                 .thenApply { response ->
                     errorHandler.handle(response).parseable {
                         response
@@ -307,7 +312,7 @@ class EvalServiceAsyncImpl internal constructor(private val clientOptions: Clien
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
     }
 }

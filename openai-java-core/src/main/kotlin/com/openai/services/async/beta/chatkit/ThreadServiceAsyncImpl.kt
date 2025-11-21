@@ -112,8 +112,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -130,7 +129,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<ThreadListPageResponse> =
@@ -150,8 +149,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -176,7 +174,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<ThreadDeleteResponse> =
@@ -200,8 +198,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -218,7 +215,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val listItemsHandler: Handler<ChatKitThreadItemList> =
@@ -241,8 +238,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -267,7 +263,7 @@ class ThreadServiceAsyncImpl internal constructor(private val clientOptions: Cli
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
     }
 }

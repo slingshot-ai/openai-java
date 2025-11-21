@@ -115,8 +115,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -133,7 +132,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<Assistant> =
@@ -156,8 +155,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -174,7 +172,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val updateHandler: Handler<Assistant> =
@@ -198,8 +196,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -216,7 +213,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<AssistantListPageResponse> =
@@ -236,8 +233,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -262,7 +258,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<AssistantDeleted> =
@@ -286,8 +282,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -304,7 +299,7 @@ class AssistantServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-        return delegate.withCancellation(cancellationTokenSource)
+            .withCancellation(cancellationTokenSource)
         }
     }
 }

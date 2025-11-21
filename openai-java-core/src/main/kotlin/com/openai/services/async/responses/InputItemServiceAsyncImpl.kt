@@ -75,8 +75,7 @@ class InputItemServiceAsyncImpl internal constructor(private val clientOptions: 
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -101,7 +100,7 @@ class InputItemServiceAsyncImpl internal constructor(private val clientOptions: 
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
     }
 }

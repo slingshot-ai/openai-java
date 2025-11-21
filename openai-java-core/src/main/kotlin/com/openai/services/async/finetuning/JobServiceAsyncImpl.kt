@@ -139,8 +139,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -159,7 +158,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<FineTuningJob> =
@@ -181,8 +180,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -201,7 +199,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val listHandler: Handler<JobListPageResponse> =
@@ -220,8 +218,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -248,7 +245,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val cancelHandler: Handler<FineTuningJob> =
@@ -271,8 +268,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -291,7 +287,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val listEventsHandler: Handler<JobListEventsPageResponse> =
@@ -313,8 +309,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -341,7 +336,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val pauseHandler: Handler<FineTuningJob> =
@@ -364,8 +359,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -384,7 +378,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val resumeHandler: Handler<FineTuningJob> =
@@ -407,8 +401,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                     .thenComposeAsync {
                         clientOptions.httpClient.executeAsync(
                             it,
@@ -427,7 +420,7 @@ class JobServiceAsyncImpl internal constructor(private val clientOptions: Client
                                 }
                         }
                     }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
     }
 }

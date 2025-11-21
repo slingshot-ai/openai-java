@@ -265,5 +265,5 @@ class FileServiceAsyncImpl internal constructor(private val clientOptions: Clien
                     errorHandler.handle(response).parseable {
                         response.use { deleteHandler.handle(it) }
                     }
-                return delegate.withCancellation(cancellationTokenSource)
+                    .withCancellation(cancellationTokenSource)
 }

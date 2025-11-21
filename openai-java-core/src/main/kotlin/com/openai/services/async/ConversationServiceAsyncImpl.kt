@@ -110,8 +110,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -128,7 +127,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val retrieveHandler: Handler<Conversation> =
@@ -150,8 +149,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -168,7 +166,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val updateHandler: Handler<Conversation> =
@@ -191,8 +189,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -209,7 +206,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
 
         private val deleteHandler: Handler<ConversationDeletedResource> =
@@ -232,8 +229,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                     .build()
                     .prepareAsync(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
-            val delegate =
-                request
+            return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(
                             it,
                             requestOptions,
@@ -250,7 +246,7 @@ class ConversationServiceAsyncImpl internal constructor(private val clientOption
                             }
                     }
                 }
-            return delegate.withCancellation(cancellationTokenSource)
+                .withCancellation(cancellationTokenSource)
         }
     }
 }
